@@ -67,7 +67,7 @@ def get_redis(redis_cfg):
     '''Returns redis client instance for a given config
     '''
     return StrictRedis(
-        unix_socket_path=redis_cfg['SOCKET'], db=redis_cfg['DB'])
+        host=redis_cfg['HOST'], port=redis_cfg['PORT'], db=redis_cfg['DB'])
 
 
 def get_queue_redis():

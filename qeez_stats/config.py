@@ -30,7 +30,7 @@ try:
 except ImportError:
     RAVEN_DSN = None
 
-REDIS_SOCKET = os.environ.get('REDIS_SOCKET', '/tmp/redis.sock')
+REDIS_HOST, REDIS_PORT = os.environ.get('REDIS_ADDRESS', '127.0.0.1:6379').split(':')
 
 CFG = dict(
     DEBUG=False,
@@ -38,15 +38,18 @@ CFG = dict(
     PORT=9100,
     JSONIFY_PRETTYPRINT_REGULAR=False,
     STAT_REDIS={
-        'SOCKET': REDIS_SOCKET,
+        'HOST': REDIS_HOST,
+        'PORT': REDIS_PORT,
         'DB': 0,
     },
     QUEUE_REDIS={
-        'SOCKET': REDIS_SOCKET,
+        'HOST': REDIS_HOST,
+        'PORT': REDIS_PORT,
         'DB': 1,
     },
     SAVE_REDIS={
-        'SOCKET': REDIS_SOCKET,
+        'HOST': REDIS_HOST,
+        'PORT': REDIS_PORT,
         'DB': 2,
     },
     ENV_PREPARE_FN='qeez.utils.models.prepare_env',
