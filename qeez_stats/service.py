@@ -4,7 +4,7 @@
 '''Qeez statistics service module
 
 $ pip install -U .
-$ REDIS_SOCKET=/tmp/redis.sock python -m qeez_stats.service
+$ REDIS_ADDRESS=127.0.0.1:6379 python -m qeez_stats.service
 '''
 
 from __future__ import (
