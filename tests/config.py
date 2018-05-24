@@ -12,11 +12,14 @@ from __future__ import (
 )
 
 import logging
+import os
 
 from raven import Client
 
 
 LOG = logging.getLogger(__name__)
+
+REDIS_HOST, REDIS_PORT = os.environ.get('REDIS_ADDRESS', '127.0.0.1:6379').split(':')
 
 CFG = dict(
     DEBUG=False,
@@ -24,15 +27,18 @@ CFG = dict(
     PORT=9999,
     JSONIFY_PRETTYPRINT_REGULAR=False,
     STAT_REDIS={
-        'SOCKET': '/dev/null',
+        'HOST': REDIS_HOST,
+        'PORT': REDIS_PORT,
         'DB': 0,
     },
     QUEUE_REDIS={
-        'SOCKET': '/dev/null',
+        'HOST': REDIS_HOST,
+        'PORT': REDIS_PORT,
         'DB': 1,
     },
     SAVE_REDIS={
-        'SOCKET': '/dev/null',
+        'HOST': REDIS_HOST,
+        'PORT': REDIS_PORT,
         'DB': 2,
     },
     ENV_PREPARE_FN='qeez.api.models.prepare_env',
