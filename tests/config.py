@@ -19,7 +19,8 @@ from raven import Client
 
 LOG = logging.getLogger(__name__)
 
-REDIS_HOST, REDIS_PORT = os.environ.get('REDIS_ADDRESS', '127.0.0.1:6379').split(':')
+REDIS_HOST, REDIS_PORT = os.environ.get(
+    'REDIS_ADDRESS', '127.0.0.1:6379').split(':')
 
 CFG = dict(
     DEBUG=False,
